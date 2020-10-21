@@ -10,8 +10,22 @@ var Queue = function() {
 
 var queueMethods = {};
 
-queueMethods.enqueue = function(value) {};
+queueMethods.enqueue = function(value) {
+  this[this.lastKey] = value;
+  this.lastKey++;
+  this.qSize++;
+};
 
-queueMethods.dequeue = function() {};
+queueMethods.dequeue = function() {
+  let temp = this[this.firstKey];
+  delete this[this.firstKey];
+  this.firstKey++;
+  if (this.qSize > 0) {
+    this.qSize--;
+  }
+  return temp;
+};
 
-queueMethods.size = function() {};
+queueMethods.size = function() {
+  return this.qSize;
+};

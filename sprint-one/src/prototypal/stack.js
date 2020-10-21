@@ -8,8 +8,21 @@ var Stack = function() {
 
 var stackMethods = {};
 
-stackMethods.push = function() {};
+stackMethods.push = function(value) {
+  // Zero indexed
+  this[this.key] = value;
+  this.key++;
+};
 
-stackMethods.pop = function() {};
+stackMethods.pop = function() {
+  if (this.key > 0) {
+    this.key--;
+  }
+  let temp = this[this.key];
+  delete this[this.key];
+  return temp;
+};
 
-stackMethods.size = function () {};
+stackMethods.size = function () {
+  return this.key;
+};

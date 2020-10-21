@@ -7,8 +7,21 @@ var Queue = function() {
 };
 
 
-Queue.prototype.enqueue = function(value) {};
+Queue.prototype.enqueue = function(value) {
+  this[this.lastKey] = value;
+  this.lastKey++;
+  this.qSize++;
+};
 
-Queue.prototype.dequeue = function() {};
+Queue.prototype.dequeue = function() {
+  let temp = this[this.firstKey];
+  this.firstKey++;
+  if (this.qSize > 0) {
+    this.qSize--;
+  }
+  return temp;
+};
 
-Queue.prototype.size = function() {};
+Queue.prototype.size = function() {
+  return this.qSize;
+};

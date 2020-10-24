@@ -26,14 +26,30 @@ var LinkedList = function() {
 
   list.removeHead = function() {
     // if head doesn't exit?! then return false.
+    if (this.head === undefined) {
+      return false;
+    }
     // if head does EXIST, we would set this.head should first be assigned to a separate variable.
-    // then this.head should reference this.head.next
-    // if this.head.next doesn't exist, set head {};
-    // return whatever we assigned to the separate variable.
+    let temp = this.head;
 
+    // then this.head should reference this.head.next
+    this.head = this.head.next;
+    return temp.value;
   };
 
   list.contains = function(target) {
+    // Helper function
+    let recursiveSearch = function (object, target) {
+      if (object.value === target) {
+        return true;
+      } else if (object.next === null) {
+        return false;
+      } else {
+        return recursiveSearch(object.next, target);
+      }
+    };
+
+    return recursiveSearch(this.head, target);
   };
 
   return list;

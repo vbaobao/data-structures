@@ -15,26 +15,42 @@ treeMethods.addChild = function(value) {
 
 
 
+// treeMethods.contains = function(target) {
+
+//   let helperFunc = function(object, target) {
+//     if (object.value === target) {
+//       return true;
+
+//     } else if (object.children.length) {
+//       for (let child of object.children) {
+
+//         if (helperFunc(child, target)) {
+//           return true;
+//         }
+//       }
+//     }
+//     return false;
+//   };
+
+//   return helperFunc(this, target);
+// };
+
 treeMethods.contains = function(target) {
+  let result = false;
 
-  let helperFunc = function(object, target) {
-    if (object.value === target) {
-      return true;
+  let innerFunc = function(obj, target) {
+    if (obj.value === target) {
+      result = true;
 
-    } else if (object.children.length) {
-      for (let child of object.children) {
-
-        if (helperFunc(child, target)) {
-          return true;
-        }
+    } else {
+      for (let child of obj.children) {
+        innerFunc(child, target);
       }
     }
-    return false;
+    return result;
   };
-
-  return helperFunc(this, target);
+  return innerFunc(this, target);
 };
-
 
 
 /*

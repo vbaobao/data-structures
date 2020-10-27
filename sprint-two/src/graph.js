@@ -2,18 +2,37 @@
 
 // Instantiate a new graph
 var Graph = function() {
+  this.nodes = {};
 };
+
+// values = {
+//   SFO: ['LAX'],
+//   LAX: ['SFO', 'SJC'],
+//   SJC: ['LAX']
+// };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+  this.nodes[node] = [];
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
+  let keys = Object.keys(this.nodes);
+
+  for (const val of keys) {
+    if (val === node.toString()) {
+      return true;
+    }
+  }
+  return false;
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+  // Iterate through node to find edges
+  // Locate edge and remove 'node' from edge's list
+  // Delete node
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.

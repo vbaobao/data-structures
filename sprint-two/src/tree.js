@@ -42,10 +42,9 @@ treeMethods.contains = function(target) {
     if (obj.value === target) {
       result = true;
 
-    } else {
-      for (let child of obj.children) {
-        innerFunc(child, target);
-      }
+    }
+    for (let child of obj.children) {
+      innerFunc(child, target);
     }
     return result;
   };

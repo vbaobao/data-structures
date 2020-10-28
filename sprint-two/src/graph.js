@@ -1,14 +1,12 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = {};
 };
 
-// values = {
+// let nodes = {
 //   SFO: ['LAX'],
 //   LAX: ['SFO', 'SJC'],
-//   SJC: ['LAX']
+//   SJC: ['LAX'],
 // };
 
 // Add a node to the graph, passing in the node's value.
@@ -18,41 +16,56 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  let keys = Object.keys(this.nodes);
-
-  for (const val of keys) {
-    if (val === node.toString()) {
+  for (let key in this.nodes) {
+    if (key === node.toString()) {
       return true;
+
     }
+    return false;
   }
-  return false;
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  // Iterate through node to find edges
-  // Locate edge and remove 'node' from edge's list
-  // Delete node
+  for (let val of this.nodes[node]) {
+    this.nodes[val] = this.nodes[val].filter(edge => edge !== node);
+  }
+  delete this.nodes[node];
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  return this.nodes[fromNode].includes(toNode) && this.nodes[toNode].includes(fromNode);
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  // if (!this.nodes[fromNode] || !this.nodes[toNode]) {
+  //   return ?!?!?!
+  // }
+
+  this.nodes[fromNode].push(toNode);
+  this.nodes[toNode].push(fromNode);
 };
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  this.nodes[fromNode] = this.nodes[fromNode].filter(edge => edge !== toNode);
+  this.nodes[toNode] = this.nodes[toNode].filter(edge => edge !== fromNode);
 };
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  // for (let key in this.nodes) {
+  //   this.nodes[cb(key)] = [];
+
+  //   for (let edge of this.nodes[key]) {
+  //     this.nodes[cb(key)] = cb(edge);
+  //   }
+  //   delete this.nodes[key];
+  // }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-

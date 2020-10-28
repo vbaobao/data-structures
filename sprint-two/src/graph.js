@@ -19,10 +19,9 @@ Graph.prototype.contains = function(node) {
   for (let key in this.nodes) {
     if (key === node.toString()) {
       return true;
-
     }
-    return false;
   }
+  return false;
 };
 
 // Removes a node from the graph.
@@ -40,10 +39,6 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-  // if (!this.nodes[fromNode] || !this.nodes[toNode]) {
-  //   return ?!?!?!
-  // }
-
   this.nodes[fromNode].push(toNode);
   this.nodes[toNode].push(fromNode);
 };
@@ -56,16 +51,18 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
-  // for (let key in this.nodes) {
-  //   this.nodes[cb(key)] = [];
-
-  //   for (let edge of this.nodes[key]) {
-  //     this.nodes[cb(key)] = cb(edge);
-  //   }
-  //   delete this.nodes[key];
-  // }
+  for (let key in this.nodes) {
+    cb(Number(key));
+  }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addNote --> O(1)
+ contains --> O(n)
+ removeNode --> O(n^2)
+ hasEdge --> O(1)
+ addEdge --> O(1)
+ removeEdge --> O(n^2)???
+ forEachNode --> O(n)
  */

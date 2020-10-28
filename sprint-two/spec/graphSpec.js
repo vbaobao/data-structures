@@ -58,11 +58,14 @@ describe('graph', function() {
     var connectToFive = function(item) {
       graph.addEdge(item, 5);
     };
+    console.log(graph);
     graph.addNode(5);
     graph.addNode(2);
     graph.addNode(1);
     graph.addNode(3);
+    console.log(graph);
     graph.forEachNode(connectToFive);
+    console.log(graph);
     expect(graph.hasEdge(2, 5)).to.equal(true);
     expect(graph.hasEdge(1, 5)).to.equal(true);
     expect(graph.hasEdge(3, 5)).to.equal(true);

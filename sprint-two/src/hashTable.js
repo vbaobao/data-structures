@@ -9,9 +9,9 @@ HashTable.prototype.insert = function(k, v) {
     this._storage.set(index, []);
   }
 
-  for (const i of this._storage.get(index)) {
-    if (i[0] === k) {
-      i[1] = v;
+  for (const tuple of this._storage.get(index)) {
+    if (tuple[0] === k) {
+      tuple[1] = v;
       return;
     }
   }
@@ -35,7 +35,7 @@ HashTable.prototype.remove = function(k) {
     if (i === index) {
       for (const [tupIndex, tuple] of bucket.entries()) {
         if (tuple[0] === k) {
-          bucket.splice(tuple, 1); // WIP
+          bucket.splice(tupIndex, 1);
         }
       }
     }
@@ -46,6 +46,5 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ .insert(), .retrieve(), .remove() ---> O(1)
  */
-
-

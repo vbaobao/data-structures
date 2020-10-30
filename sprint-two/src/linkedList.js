@@ -29,8 +29,8 @@ var LinkedList = function() {
     if (!this.head) {
       return false;
     }
-    let temp = this.head;
 
+    let temp = this.head;
     this.head = this.head.next;
 
     return temp.value;

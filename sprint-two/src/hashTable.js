@@ -27,7 +27,6 @@ HashTable.prototype.retrieve = function(k) {
 
   for (const i of bucket) {
     if (i[0] === k) {
-
       return i[1];
     }
   }

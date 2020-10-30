@@ -1,7 +1,6 @@
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
-  this._count = 0;
 };
 
 HashTable.prototype.insert = function(k, v) {
@@ -42,13 +41,6 @@ HashTable.prototype.remove = function(k) {
       for (const [tupIndex, tuple] of bucket.entries()) {
         if (tuple[0] === k) {
           bucket.splice(tupIndex, 1);
-          this._count -= 1;
-
-          let loadFactor = this._count / this._limit;
-
-          if (loadFactor < 0.25) {
-            this.resize(loadFactor);
-          }
         }
       }
     }

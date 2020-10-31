@@ -54,6 +54,10 @@ bstMethods.contains = function(value) {
 };
 
 bstMethods.depthFirstLog = function(callback) {
+  if (!callback) {
+    return false;
+  }
+
   var bstSearch = function(node) {
     callback(node.value);
     if (node.left !== null) {

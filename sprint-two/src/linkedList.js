@@ -36,21 +36,38 @@ var LinkedList = function() {
     return temp.value;
   };
 
+  // list.contains = function(target) {
+  //   if (!this.head) {
+  //     return false;
+  //   }
+
+  //   let current = this.head;
+
+  //   while (current) {
+  //     if (current.value === target) {
+  //       return true;
+
+  //     } else {
+  //       current = current.next;
+  //     }
+  //   }
+
+  //   return false;
+  // };
+
   list.contains = function(target) {
-    if (!this.head) {
-      return false;
-    }
-
-    while (this.head) {
-      if (this.head.value === target) {
+    // Helper function
+    let recursiveSearch = function (object, target) {
+      if (object.value === target) {
         return true;
-
+      } else if (object.next === null) {
+        return false;
       } else {
-        this.head = this.head.next;
+        return recursiveSearch(object.next, target);
       }
-    }
+    };
 
-    return false;
+    return recursiveSearch(this.head, target);
   };
 
   return list;

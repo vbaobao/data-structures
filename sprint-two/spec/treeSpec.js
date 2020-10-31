@@ -42,4 +42,10 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should be able to handle adding duplicate children', function() {
+    tree.addChild(2);
+    tree.addChild(2);
+    expect(tree.children.length).to.equal(1);
+  });
+
 });

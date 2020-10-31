@@ -10,7 +10,15 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  this.children.push( Tree(value) );
+  let isDup = false;
+  for (let child of this.children) {
+    if (child.value === value) {
+      isDup = true;
+    }
+  }
+  if (!isDup) {
+    this.children.push(Tree(value));
+  }
 };
 
 
@@ -54,6 +62,6 @@ treeMethods.contains = function(target) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- addChild() --> O(1)
+ addChild() --> O(n) if checing for duplicate children, O(1) if directly pushed to T
  contain() -->  O(n^2)???
  */

@@ -51,5 +51,8 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  // add more tests here to test the functionality of linkedList
+  it('should be able to handle null value in addToTail', function() {
+    linkedList.addToTail(null);
+    expect(linkedList.contains(null)).to.equal(true);
+  });
 });

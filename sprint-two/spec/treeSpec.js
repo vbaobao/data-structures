@@ -37,8 +37,15 @@ describe('tree', function() {
     tree.addChild(6);
     tree.children[0].addChild(7);
     tree.children[1].addChild(8);
+    // console.log(tree);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+  });
+
+  it('should be able to handle adding duplicate children', function() {
+    tree.addChild(2);
+    tree.addChild(2);
+    expect(tree.children.length).to.equal(1);
   });
 
 });

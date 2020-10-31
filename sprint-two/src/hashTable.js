@@ -4,7 +4,13 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
-  var index = getIndexBelowMaxForKey(k, this._limit);
+  var index;
+  if (k === '') {
+    index = 0;
+  } else {
+    index = getIndexBelowMaxForKey(k, this._limit);
+  }
+
   let bucket = this._storage.get(index);
 
   if (bucket === undefined) {
@@ -22,7 +28,13 @@ HashTable.prototype.insert = function(k, v) {
 };
 
 HashTable.prototype.retrieve = function(k) {
-  var index = getIndexBelowMaxForKey(k, this._limit);
+  var index;
+  if (k === '') {
+    index = 0;
+  } else {
+    index = getIndexBelowMaxForKey(k, this._limit);
+  }
+
   let bucket = this._storage.get(index);
 
   for (const i of bucket) {
@@ -33,7 +45,12 @@ HashTable.prototype.retrieve = function(k) {
 };
 
 HashTable.prototype.remove = function(k) {
-  var index = getIndexBelowMaxForKey(k, this._limit);
+  var index;
+  if (k === '') {
+    index = 0;
+  } else {
+    index = getIndexBelowMaxForKey(k, this._limit);
+  }
 
   this._storage.each(function(bucket, i) {
     if (i === index) {

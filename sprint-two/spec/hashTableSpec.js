@@ -73,4 +73,10 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+  it ('should handle if key is empty', function() {
+    hashTable.insert('', 123);
+    hashTable.retrieve('');
+    expect(hashTable.retrieve('')).to.equal(123);
+  });
 });

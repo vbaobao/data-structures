@@ -24,4 +24,9 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should handle if empty string given for .add()', function() {
+    set.add('');
+    expect(set.contains('')).to.equal(false);
+  });
+
 });

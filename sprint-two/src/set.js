@@ -9,6 +9,10 @@ var Set = function() {
 var setPrototype = {};
 
 setPrototype.add = function(item) {
+  if (item === '') {
+    return;
+  }
+
   var index = getIndexBelowMaxForKey(item, this._limit);
   let bucket = this._storage.get(index);
 
@@ -21,6 +25,10 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
+  if (item === '') {
+    return false;
+  }
+
   var index = getIndexBelowMaxForKey(item, this._limit);
   let bucket = this._storage.get(index);
 

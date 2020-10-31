@@ -41,7 +41,7 @@ var LinkedList = function() {
       return false;
     }
 
-    while (this.head !== null) {
+    while (this.head) {
       if (this.head.value === target) {
         return true;
 

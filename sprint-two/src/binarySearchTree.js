@@ -89,4 +89,3 @@ bstMethods.depthFirstLog = function(callback) {
  * .contains() -> O(logn)
  * .depthFirstLog() -> O(n)
  */
-//
